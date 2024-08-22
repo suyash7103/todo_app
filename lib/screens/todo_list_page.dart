@@ -84,8 +84,7 @@ class _TodoListPageState extends State<TodoListPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Add To-Do Item', style: TextStyle(color: Colors.white)),
-          backgroundColor: Colors.grey[900],
+          title: Text('Add To-Do Item'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -93,24 +92,20 @@ class _TodoListPageState extends State<TodoListPage> {
                 controller: _titleController,
                 decoration: InputDecoration(
                   labelText: 'Title',
-                  labelStyle: TextStyle(color: Colors.white70),
                   border: OutlineInputBorder(),
-                  fillColor: Colors.grey[800],
+                  fillColor: Colors.grey[300],
                   filled: true,
                 ),
-                style: TextStyle(color: Colors.white),
               ),
               SizedBox(height: 10),
               TextField(
                 controller: _deadlineController,
                 decoration: InputDecoration(
                   labelText: 'Deadline (YYYY-MM-DD)',
-                  labelStyle: TextStyle(color: Colors.white70),
                   border: OutlineInputBorder(),
-                  fillColor: Colors.grey[800],
+                  fillColor: Colors.grey[300],
                   filled: true,
                 ),
-                style: TextStyle(color: Colors.white),
                 keyboardType: TextInputType.datetime,
               ),
             ],
@@ -120,7 +115,7 @@ class _TodoListPageState extends State<TodoListPage> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Cancel', style: TextStyle(color: Colors.teal)),
+              child: Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
@@ -132,7 +127,7 @@ class _TodoListPageState extends State<TodoListPage> {
                 _addTodoItem(newItem);
                 Navigator.of(context).pop();
               },
-              child: Text('Add', style: TextStyle(color: Colors.teal)),
+              child: Text('Add'),
             ),
           ],
         );
@@ -149,8 +144,7 @@ class _TodoListPageState extends State<TodoListPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Edit To-Do Item', style: TextStyle(color: Colors.white)),
-          backgroundColor: Colors.grey[900],
+          title: Text('Edit To-Do Item'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -158,24 +152,20 @@ class _TodoListPageState extends State<TodoListPage> {
                 controller: _titleController,
                 decoration: InputDecoration(
                   labelText: 'Title',
-                  labelStyle: TextStyle(color: Colors.white70),
                   border: OutlineInputBorder(),
-                  fillColor: Colors.grey[800],
+                  fillColor: Colors.grey[300],
                   filled: true,
                 ),
-                style: TextStyle(color: Colors.white),
               ),
               SizedBox(height: 10),
               TextField(
                 controller: _deadlineController,
                 decoration: InputDecoration(
                   labelText: 'Deadline (YYYY-MM-DD)',
-                  labelStyle: TextStyle(color: Colors.white70),
                   border: OutlineInputBorder(),
-                  fillColor: Colors.grey[800],
+                  fillColor: Colors.grey[300],
                   filled: true,
                 ),
-                style: TextStyle(color: Colors.white),
                 keyboardType: TextInputType.datetime,
               ),
             ],
@@ -185,7 +175,7 @@ class _TodoListPageState extends State<TodoListPage> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Cancel', style: TextStyle(color: Colors.teal)),
+              child: Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
@@ -198,7 +188,7 @@ class _TodoListPageState extends State<TodoListPage> {
                 _updateTodoItem(updatedItem);
                 Navigator.of(context).pop();
               },
-              child: Text('Update', style: TextStyle(color: Colors.teal)),
+              child: Text('Update'),
             ),
           ],
         );
@@ -211,19 +201,17 @@ class _TodoListPageState extends State<TodoListPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('To-Do List'),
-        backgroundColor: Colors.teal[700],
+        backgroundColor: Colors.blue,
       ),
       body: _todoItems.isEmpty
-          ? Center(
-              child: Text('No to-do items yet!',
-                  style: TextStyle(color: Colors.white70)))
+          ? Center(child: Text('No to-do items yet!'))
           : ListView.builder(
               itemCount: _todoItems.length,
               itemBuilder: (BuildContext context, int index) {
                 final item = _todoItems[index];
                 return Card(
                   margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                  color: Colors.grey[850],
+                  color: Colors.grey[300],
                   elevation: 5,
                   child: ListTile(
                     contentPadding: EdgeInsets.all(16),
@@ -232,18 +220,16 @@ class _TodoListPageState extends State<TodoListPage> {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
                         decoration: item.isCompleted
                             ? TextDecoration.lineThrough
                             : null,
                       ),
                     ),
-                    subtitle: Text(
-                        'Due: ${item.deadline.toLocal()}'.split(' ')[0],
-                        style: TextStyle(color: Colors.white70)),
+                    subtitle:
+                        Text('Due: ${item.deadline.toLocal()}'.split(' ')[0]),
                     trailing: Checkbox(
-                      activeColor: Colors.teal,
-                      checkColor: Colors.black,
+                      activeColor: Colors.blue,
+                      checkColor: Colors.white,
                       value: item.isCompleted,
                       onChanged: (bool? value) {
                         final updatedItem = TodoItem(
@@ -263,7 +249,7 @@ class _TodoListPageState extends State<TodoListPage> {
             ),
       floatingActionButton: FloatingActionButton(
         onPressed: _showAddTodoDialog,
-        backgroundColor: Colors.teal[700],
+        backgroundColor: Colors.blue,
         child: Icon(Icons.add),
       ),
     );
